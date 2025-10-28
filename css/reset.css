@@ -1,0 +1,191 @@
+/* General Reset and Styling */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    text-transform: capitalize;
+    font-family: var(--font), sans-serif;
+}
+
+body[dir="rtl"] {
+    * {
+        text-transform: uppercase;
+    }
+}
+
+::selection {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+*[data-aos] {
+    will-change: opacity, transform;
+}
+
+html {
+    direction: rtl;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(226, 225, 225);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    cursor: grab;
+}
+
+::-webkit-scrollbar-thumb:active {
+    cursor: grabbing;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+body,
+main {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+svg {
+    width: 20px;
+}
+
+path {
+    fill: currentColor !important;
+}
+
+main {
+    flex-grow: 1;
+}
+
+footer {
+    margin-top: auto;
+}
+
+header,
+footer,
+section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding-block: 50px;
+}
+
+select {
+    appearance: none;
+    background-color: transparent;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: inline-block;
+}
+
+img,
+svg {
+    height: 100%;
+    vertical-align: middle;
+}
+
+img {
+    width: 100%;
+}
+
+svg {
+    transition: var(--transition);
+}
+
+a,
+button {
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+button {
+    white-space: nowrap;
+}
+
+img,
+svg,
+i,
+path,
+button,
+a,
+dialog,
+video {
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    line-height: 1.5;
+}
+
+.container {
+    padding-inline: 1rem;
+    margin: auto;
+    height: 100%;
+}
+
+.fullScreen {
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+
+/* ======CONTAINER MEDIA============= */
+
+@media (min-width: 768px) {
+    .container {
+        width: 720px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        width: 992px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .container {
+        width: 1200px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .container {
+        width: 1340px;
+    }
+}
