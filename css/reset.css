@@ -163,6 +163,15 @@ p {
     min-height: 100dvh;
 }
 
+.truncate{
+     display: -webkit-box;
+      -webkit-line-clamp: 1;
+      line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-height: fit-content;
+}
 
 /* ======CONTAINER MEDIA============= */
 

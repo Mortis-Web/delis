@@ -709,7 +709,7 @@
     /*! DOCTORS SECTIONS */
     section.products{
       padding-top: 0;
-      .readMore{
+      > .readMore{
         display: block;
         margin-inline: auto;
         margin-top: 1rem;
@@ -778,6 +778,16 @@
         }
 
       }
+    }
+
+    .productName,.productDesc{
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-height: fit-content;
     }
 
     .seeAllProducts {
@@ -1567,5 +1577,9 @@
         button a{
           font-size: 0.75rem !important;
         }
+      }
+
+      .intro{
+        font-size: 1.5rem;
       }
     }
