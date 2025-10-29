@@ -1497,8 +1497,11 @@
         transform: translateY(60px);
       }
 
-      button.contact a {
-        font-size: 0.75rem;
+      body[dir='rtl']{
+
+        button.contact a {
+          font-size: 0.75rem;
+        }
       }
 
       .heroIntro h1 {
