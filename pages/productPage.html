@@ -234,28 +234,35 @@
         </article>
       </div>
     </header>
+<section id="productInfo">
+  <div class="container" data-aos="fade-up" data-aos-delay="300">
+    <article class="productDetails">
+      <h2 id="selectedProductName">سائل جلي ديلاس</h2>
+      <p id="selectedProductDesc">
+        سائل جلي ديلاس عالي التركيز 460 مل تركيبة متطورة بتقنية الكلور بدون كلور لازالة الدهون والروائح ولمعة للاواني بثلاث روائح مميزة وعناية فائقة للايدي الحساسة
+      </p>
+      <button class="readMore" type="button">
+        <a href="./contact.html">تواصل معنا</a>
+      </button>
+    </article>
 
-    <section id="productInfo">
-        <div class="container" data-aos="fade-up" data-aos-delay="300">
-            <article class="productDetails">
-                <h2 id="selectedProductName">سائل جلي ديلاس</h2>
-                <p id="selectedProductDesc" >سائل جلي ديلاس عالي التركيز 460 مل تركيبة متطورة بتقنية الكلور بدون كلور لازالة الدهون والروائح ولمعة للاواني بثلاث روائح مميزة وعناية فائقة للايدي الحساسة</p>
-                <button class="readMore" type="button">
-                    <a href="./contact.html">تواصل معنا</a>
-                </button>
-            </article>
-            <article class="productImage">
-                <img src="../media/images/product1.png" alt="product image">
-                <div class="productVarients">
-                    <button class="swipeVarient" id="prevVarient"><i class="fa-solid fa-arrow-right"></i></button>
-                    <button class="swipeVarient" type="button">صنوبر</button>
-                    <button class="swipeVarient" type="button">ليمون</button>
-                    <button class="swipeVarient active" type="button">فراولة</button>
-                    <button class="swipeVarient" id="nextVarient"><i class="fa-solid fa-arrow-left"></i></button>
-                </div>
-            </article>
-        </div>
-    </section>
+    <article class="productImage">
+      <img id="productImage" src="../media/images/product1.png" alt="product image" />
+      <div class="productVarients">
+        <button class="swipeVarient" id="prevVarient">
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <!-- ✅ Dynamic buttons will be injected here -->
+        <div id="variantButtons"></div>
+
+        <button class="swipeVarient" id="nextVarient">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+      </div>
+    </article>
+  </div>
+</section>
 
 <section id="otherProducts" class="products">
             <h2 class="intro" data-aos="fade-up">منتجات اخرى</h2>
@@ -494,6 +501,7 @@
 <!-- 3. Your own scripts (that depend on libs being loaded) -->
 <script src="../js/script.js" defer></script>
 <script src="../js/swiper.js" defer></script>
+<script src="../js/productVarients.js" defer></script>
 
 <!-- 4. Init AOS after everything -->
 <script>

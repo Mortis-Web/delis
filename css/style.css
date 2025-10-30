@@ -31,6 +31,10 @@
         line-height: 1.25;
       }
 
+        .searchEngine label {
+      left: initial !important;
+      right: 1rem;
+    }
       nav li {
         font-size: 1rem;
       }
@@ -57,6 +61,17 @@
       }
 
 
+    .filter {
+      order: 1;
+    }
+
+    .filterWrapper {
+      direction: ltr;
+    }
+
+    .productFilter .container {
+      grid-template-columns: 73% 25% !important;
+    }
 
       @media (max-width: 480px) {
         #lang_changer {
@@ -205,7 +220,7 @@
 
     nav .logo {
       width: 100%;
-      height: 75px;
+      height: 55px;
       padding-block: 4px;
       object-fit: contain;
     }
@@ -240,22 +255,8 @@
       }
     }
 
-    .searchEngine label {
-      left: initial !important;
-      right: 1rem;
-    }
 
-    .filter {
-      order: 1;
-    }
 
-    .filterWrapper {
-      direction: ltr;
-    }
-
-    .productFilter .container {
-      grid-template-columns: 73% 25% !important;
-    }
 
     svg {
       path {
@@ -1505,6 +1506,7 @@ section#productInfo{
       width: 100%;
       height: 100%;
       object-fit: contain;
+      min-height: 200px;
       max-height: 500px;
     }
   }
@@ -1524,6 +1526,12 @@ section#productInfo{
   width: fit-content;
   gap: 0.5rem;
   margin: auto;
+}
+
+#variantButtons{
+  display: flex;
+  gap: 1rem ;
+  align-items: center;
 }
 
 .swipeVarient{
@@ -1694,13 +1702,22 @@ section#productInfo{
       .whoWe .container {
         padding: 3rem 2rem;
       }
+          header#home .swiper-slide,
+      header#home .container {
+        min-height: 70dvh !important;
+        max-height: 700px;
+      }
+      header#home .container{
+        justify-content: end;
+        padding-block: 4rem;
+      }
+         header#home .heroIntro button {
+        scale: 0.9;
+      }
+
     }
 
     @media (max-width: 640px) {
-      nav .logo {
-        scale: 100%;
-        height: 55px;
-      }
 
       nav {
         width: 100%;
@@ -1713,6 +1730,8 @@ section#productInfo{
       nav:not(.floating_nav) {
         padding: 0 0rem;
       }
+
+
 
       .whoWe .container article {
         flex: 1 1 300px !important;
@@ -1778,6 +1797,10 @@ section#productInfo{
           font-size: 0.75rem;
         }
       }
+      header#home .container{
+        justify-content: center;
+        padding-block: 10rem;
+      }
 
       .heroIntro h1 {
         width: 100%;
@@ -1810,15 +1833,7 @@ section#productInfo{
         flex-direction: column;
       }
 
-      header#home .heroIntro button {
-        scale: 0.9;
-      }
 
-      header#home .swiper-slide,
-      header#home .container {
-        min-height: 60dvh !important;
-        max-height: 580px;
-      }
 
 
 
@@ -1872,7 +1887,10 @@ section#productInfo{
       .intro {
         font-size: 1.5rem;
       }
-.productVarients{
+      section#productInfo{
+        padding-inline: 15px;
+      }
+#variantButtons{
   max-width: 100%;
   width: 100% !important;
   flex-direction: column;
