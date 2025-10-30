@@ -10,16 +10,16 @@ document.addEventListener("DOMContentLoaded", () => {
     variants:
       dir === "rtl"
         ? [
-            { name: "صنوبر", image: "../media/images/product1.png" },
-            { name: "ليمون", image: "../media/images/product2.png" },
-            { name: "فراولة", image: "../media/images/product1.png" },
-            { name: "لافندر", image: "../media/images/product2.png" },
+            { name: "صنوبر", image: "../../media/images/product1.png" },
+            { name: "ليمون", image: "../../media/images/product2.png" },
+            { name: "فراولة", image: "../../media/images/product1.png" },
+            { name: "لافندر", image: "../../media/images/product2.png" },
           ]
         : [
-            { name: "Pine", image: "../media/images/product1.png" },
-            { name: "Lemon", image: "../media/images/product2.png" },
-            { name: "Strawberry", image: "../media/images/product1.png" },
-            { name: "Lavender", image: "../media/images/product2.png" },
+            { name: "Pine", image: "../../media/images/product1.png" },
+            { name: "Lemon", image: "../../media/images/product2.png" },
+            { name: "Strawberry", image: "../../media/images/product1.png" },
+            { name: "Lavender", image: "../../media/images/product2.png" },
           ],
   };
 
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     imgEl.src = current.image;
   }
 
-  // --- Navigation logic (infinite) ---
+  // --- Navigation logic (infinite loop) ---
   prevBtn.addEventListener("click", () => {
     startIndex = (startIndex - 1 + productData.variants.length) % productData.variants.length;
     activeIndex = (activeIndex - 1 + productData.variants.length) % productData.variants.length;

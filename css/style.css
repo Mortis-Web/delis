@@ -38,6 +38,10 @@
       nav li {
         font-size: 1rem;
       }
+      .productVarients{
+  direction: ltr;
+
+      }
 
       #lang_changer .langs {
         font-size: 1.125rem;

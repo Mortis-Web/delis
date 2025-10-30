@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -234,28 +234,32 @@ Who We            </a>
 <section id="productInfo">
   <div class="container" data-aos="fade-up" data-aos-delay="300">
     <article class="productDetails">
-      <h2 id="selectedProductName"></h2>
-      <p id="selectedProductDesc"></p>
+      <h2 id="selectedProductName">Dellis Dishwashing Liquid</h2>
+      <p id="selectedProductDesc">
+        Dellis high-concentration dishwashing liquid (460ml) — an advanced formula with chlorine-free technology for removing grease and odors, giving dishes a brilliant shine. Comes in three distinctive scents and provides superior care for sensitive hands.
+      </p>
       <button class="readMore" type="button">
         <a href="./contact.html">Contact Us</a>
       </button>
     </article>
 
     <article class="productImage">
-      <img id="productImage" src="" alt="product image" />
+      <img id="productImage" src="../media/images/product1.png" alt="product image" />
       <div class="productVarients">
         <button class="swipeVarient" id="prevVarient">
-          <i class="fa-solid fa-arrow-right"></i>
-        </button>
-        <div id="variantButtons" class="variant-list"></div>
-        <button class="swipeVarient" id="nextVarient">
           <i class="fa-solid fa-arrow-left"></i>
+        </button>
+
+        <!-- ✅ Dynamic buttons will be injected here -->
+        <div id="variantButtons"></div>
+
+        <button class="swipeVarient" id="nextVarient">
+          <i class="fa-solid fa-arrow-right"></i>
         </button>
       </div>
     </article>
   </div>
 </section>
-
 
 
 
@@ -496,6 +500,7 @@ Who We            </a>
 <!-- 3. Your own scripts (that depend on libs being loaded) -->
 <script src="../../js/script.js" defer></script>
 <script src="../../js/swiper.js" defer></script>
+<script src="../../js/productVarients.js" defer></script>
 
 <!-- 4. Init AOS after everything -->
 <script>
