@@ -247,13 +247,18 @@
     </article>
 
     <article class="productImage">
-      <img id="productImage" src="../media/images/product1.png" alt="product image" />
+      <!-- ✅ Each image gets a data-variant attribute -->
+      <img src="../media/images/product1.png" data-variant="pine" alt="Pine" />
+      <img src="../media/images/product2.png" data-variant="lemon" alt="Lemon" class="hidden" />
+      <img src="../media/images/product1.png" data-variant="strawberry" alt="Strawberry" class="hidden" />
+      <img src="../media/images/product2.png" data-variant="lavender" alt="Lavender" class="hidden" />
+      <img src="../media/images/product1.png" data-variant="orange" alt="Orange" class="hidden" />
+
       <div class="productVarients">
         <button class="swipeVarient" id="prevVarient">
           <i class="fa-solid fa-arrow-right"></i>
         </button>
 
-        <!-- ✅ Dynamic buttons will be injected here -->
         <div id="variantButtons"></div>
 
         <button class="swipeVarient" id="nextVarient">
@@ -263,7 +268,6 @@
     </article>
   </div>
 </section>
-
 <section id="otherProducts" class="products">
             <h2 class="intro" data-aos="fade-up">منتجات اخرى</h2>
 
