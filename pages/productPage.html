@@ -247,21 +247,34 @@
     </article>
 
     <article class="productImage">
-      <!-- ✅ Each image gets a data-variant attribute -->
-      <img src="../media/images/product1.png" data-variant="pine" alt="Pine" />
-      <img src="../media/images/product2.png" data-variant="lemon" alt="Lemon" class="hidden" />
-      <img src="../media/images/product1.png" data-variant="strawberry" alt="Strawberry" class="hidden" />
-      <img src="../media/images/product2.png" data-variant="lavender" alt="Lavender" class="hidden" />
-      <img src="../media/images/product1.png" data-variant="orange" alt="Orange" class="hidden" />
 
-      <div class="productVarients">
-        <button class="swipeVarient" id="prevVarient">
+      <!-- ✅ Each image gets a data-variant attribute -->
+<figure id="currentProductImage">
+  <div class="otherImages">
+    <span class="otherImg active"><img src="../media/images/product1.png" data-variant="pine" alt="Pine" /></span>
+    <span class="otherImg"><img src="../media/images/product2.png" data-variant="lemon" alt="Lemon" /></span>
+    <span class="otherImg"><img src="../media/images/product1.png" data-variant="strawberry" alt="Strawberry" /></span>
+    <span class="otherImg"><img src="../media/images/product2.png" data-variant="lavender" alt="Lavender" /></span>
+    <span class="otherImg"><img src="../media/images/product1.png" data-variant="orange" alt="Orange" /></span>
+  </div>
+
+  <img src="../media/images/product1.png" data-variant="pine" alt="Pine" />
+  <img src="../media/images/product2.png" data-variant="lemon" alt="Lemon" class="hidden" />
+  <img src="../media/images/product1.png" data-variant="strawberry" alt="Strawberry" class="hidden" />
+  <img src="../media/images/product2.png" data-variant="lavender" alt="Lavender" class="hidden" />
+  <img src="../media/images/product1.png" data-variant="orange" alt="Orange" class="hidden" />
+</figure>
+
+
+
+      <div class="productVariants">
+        <button class="swipeVariant" id="prevVariant">
           <i class="fa-solid fa-arrow-right"></i>
         </button>
 
         <div id="variantButtons"></div>
 
-        <button class="swipeVarient" id="nextVarient">
+        <button class="swipeVariant" id="nextVariant">
           <i class="fa-solid fa-arrow-left"></i>
         </button>
       </div>
@@ -505,7 +518,7 @@
 <!-- 3. Your own scripts (that depend on libs being loaded) -->
 <script src="../js/script.js" defer></script>
 <script src="../js/swiper.js" defer></script>
-<script src="../js/productVarients.js" defer></script>
+<script src="../js/productVariants.js" defer></script>
 
 <!-- 4. Init AOS after everything -->
 <script>
