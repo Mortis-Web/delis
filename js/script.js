@@ -94,6 +94,41 @@ menuDropDownHolder.addEventListener("click", () => {
   }
 });
 
+  // ✅ Function to check all Swiper wrappers
+function checkSwiperWrappers() {
+  const swipers = document.querySelectorAll(".swiper");
+
+  swipers.forEach(swiperEl => {
+    const swiperInstance = swiperEl.swiper; // get Swiper instance
+    if (!swiperInstance) return;
+
+    const slides = swiperInstance.slides; // all slides including clones
+    const realSlides = swiperInstance.slides.filter(slide => !slide.classList.contains("swiper-slide-duplicate"));
+    const slidesPerView = swiperInstance.params.slidesPerView || 1;
+
+    const wrapper = swiperEl.querySelector(".swiper-wrapper");
+    if (!wrapper) return;
+
+    if (realSlides.length <= slidesPerView) {
+      wrapper.style.justifyContent = "center";
+      swiperEl.classList.add("no-slide");
+    } else {
+      wrapper.style.justifyContent = "";
+      swiperEl.classList.remove("no-slide");
+    }
+  });
+}
+
+// ✅ Run after all Swipers are initialized
+window.addEventListener("load", () => {
+  checkSwiperWrappers();
+});
+
+// ✅ Update on resize (responsive breakpoints)
+window.addEventListener("resize", () => {
+  checkSwiperWrappers();
+});
+
 // const sections = document.querySelectorAll("section,header");
 // const navLinks = document.querySelectorAll(
 //   "#navbar .navLink, #footer_navLinks a"
