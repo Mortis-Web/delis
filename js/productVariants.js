@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let thumbStartIndex = 0;
   let buttonStartIndex = 0;
-let maxVisibleThumbs = window.innerWidth < 640 ? 3 : 5;
-  let maxVisibleButtons = window.innerWidth < 640 ? 1 : 3;
+let maxVisibleThumbs = 6;
+  let maxVisibleButtons = 1;
 
   // ✅ Create variant buttons
   const allButtons = Array.from(slides).map((img, i) => {
@@ -88,13 +88,13 @@ let maxVisibleThumbs = window.innerWidth < 640 ? 3 : 5;
 
   // ✅ Responsive buttons (for small screens)
   window.addEventListener("resize", () => {
-    const newMaxVisible = window.innerWidth < 640 ? 1 : 3;
+    const newMaxVisible = 1;
     if (newMaxVisible !== maxVisibleButtons) {
       maxVisibleButtons = newMaxVisible;
       renderVariantButtons(mainSwiper.realIndex);
     }
 
-  const newMaxVisibleThumbs = window.innerWidth < 640 ? 3 : 5; // 👈 update for thumbnails
+  const newMaxVisibleThumbs = 6; // 👈 update for thumbnails
   if (newMaxVisibleThumbs !== maxVisibleThumbs) {
     maxVisibleThumbs = newMaxVisibleThumbs;
     renderThumbnails(mainSwiper.realIndex);
