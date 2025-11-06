@@ -35,9 +35,13 @@ document.addEventListener("DOMContentLoaded", () => {
           else swiper.autoplay.stop();
         });
       },
-      { threshold: 0.1 } // start autoplay when 50% visible
+      { threshold: 0.1 }
     );
 
     observer.observe(el);
+
+    // ✅ Stop autoplay on hover
+    el.addEventListener("mouseenter", () => swiper.autoplay.stop());
+    el.addEventListener("mouseleave", () => swiper.autoplay.start());
   });
 });
