@@ -1,95 +1,140 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const mainImages = [...document.querySelectorAll("#currentProductImage > img")];
-  const otherImagesContainer = document.querySelector(".otherImages");
-  const otherImages = [...otherImagesContainer.querySelectorAll(".otherImg")];
-  const prevBtn = document.getElementById("prevVariant");
-  const nextBtn = document.getElementById("nextVariant");
+  const mainSwiper = new Swiper(".currentProductSwiper", {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    grabCursor: true,
+    loop: true,
+    speed: 750,
+    keyboard: { enabled: true },
+    navigation: {
+      nextEl: ".swiper-next",
+      prevEl: ".swiper-prev",
+    },
+  });
+
   const variantButtonsContainer = document.getElementById("variantButtons");
+  const slides = document.querySelectorAll(".currentProductSwiper .swiper-slide img");
+  const otherImagesContainer = document.querySelector(".otherImages");
+  const otherImages = Array.from(document.querySelectorAll(".otherImages .otherImg"));
+  const total = slides.length;
 
-  let activeIndex = 0;
-  let startIndex = 0; // start of visible buttons/thumbnails
-  const total = mainImages.length;
-  const maxVisible = 3; // max visible buttons and images on small screens
+  let thumbStartIndex = 0;
+  let buttonStartIndex = 0;
+let maxVisibleThumbs = window.innerWidth < 640 ? 3 : 5;
+  let maxVisibleButtons = window.innerWidth < 640 ? 1 : 3;
 
-  // Create variant buttons
-const allButtons = otherImages.map((span, i) => {
-  const img = span.querySelector("img");
-  const btn = document.createElement("button");
-  btn.classList.add("swipeVariant");
-  btn.textContent = img.alt; // now it correctly uses the alt text
-  btn.addEventListener("click", () => showMainImage(i));
-  return btn;
-});
+  // ✅ Create variant buttons
+  const allButtons = Array.from(slides).map((img, i) => {
+    const btn = document.createElement("button");
+    btn.className = "swipeVariant";
+    btn.textContent = img.alt;
+    btn.addEventListener("click", () => mainSwiper.slideToLoop(i));
+    return btn;
+  });
 
-  // Render variant buttons (always capped at 3)
- function renderVariantButtons() {
-  variantButtonsContainer.innerHTML = "";
+  // ✅ Thumbnail click → change swiper slide
+  otherImages.forEach((thumb, i) => {
+    thumb.addEventListener("click", () => {
+      mainSwiper.slideToLoop(i);
+    });
+  });
 
-  // Always show maxVisible buttons (3)
-  const visibleCount = Math.min(maxVisible, total);
+  // ✅ Render thumbnails (show only 5)
+  function renderThumbnails(activeIndex = 0) {
+    otherImagesContainer.innerHTML = "";
+    const visibleCount = Math.min(maxVisibleThumbs, total);
 
-  // Adjust startIndex so the active button is always visible
-  if (activeIndex < startIndex) startIndex = activeIndex;
-  if (activeIndex >= startIndex + visibleCount) startIndex = activeIndex - visibleCount + 1;
+    // Adjust thumbnail start index
+    if (activeIndex < thumbStartIndex) thumbStartIndex = activeIndex;
+    if (activeIndex >= thumbStartIndex + visibleCount)
+      thumbStartIndex = activeIndex - visibleCount + 1;
 
-  for (let i = 0; i < visibleCount; i++) {
-    const index = (startIndex + i) % total;
-    const btn = allButtons[index];
-    btn.classList.toggle("active", index === activeIndex);
-    variantButtonsContainer.appendChild(btn);
+    // Render visible thumbnails
+    for (let i = 0; i < visibleCount; i++) {
+      const index = (thumbStartIndex + i + total) % total;
+      const thumb = otherImages[index];
+      thumb.classList.toggle("active", index === activeIndex);
+      otherImagesContainer.appendChild(thumb);
+    }
   }
-}
 
-  // Render thumbnails (capped at 3 on small screens)
-function renderOtherImages() {
-  otherImagesContainer.innerHTML = "";
-  const visibleCount = window.innerWidth <= 640 ? maxVisible : total;
-  for (let i = 0; i < visibleCount; i++) {
-    const index = (startIndex + i) % total;
-    const span = otherImages[index];
-    span.classList.toggle("active", index === activeIndex);
-    otherImagesContainer.appendChild(span);
+  // ✅ Render variant buttons (same logic but separate state)
+  function renderVariantButtons(activeIndex = 0) {
+    variantButtonsContainer.innerHTML = "";
+    const visibleCount = Math.min(maxVisibleButtons, total);
+
+    if (activeIndex < buttonStartIndex) buttonStartIndex = activeIndex;
+    if (activeIndex >= buttonStartIndex + visibleCount)
+      buttonStartIndex = activeIndex - visibleCount + 1;
+
+    for (let i = 0; i < visibleCount; i++) {
+      const index = (buttonStartIndex + i + total) % total;
+      const btn = allButtons[index];
+      btn.classList.toggle("active", index === activeIndex);
+      variantButtonsContainer.appendChild(btn);
+    }
   }
-}
 
+  // ✅ Update active thumb + buttons
+  function updateActive(index) {
+    renderThumbnails(index);
+    renderVariantButtons(index);
+  }
 
-  // Show main image & sync thumbnails & buttons
-  function showMainImage(index) {
-    mainImages.forEach((img, i) => img.classList.toggle("hidden", i !== index));
-    activeIndex = index;
+  // ✅ Sync on swiper change
+  mainSwiper.on("slideChange", () => {
+    updateActive(mainSwiper.realIndex);
+  });
 
-    // Adjust startIndex on small screens
-    if (window.innerWidth <= 640) {
-      if (activeIndex < startIndex) startIndex = activeIndex;
-      if (activeIndex >= startIndex + maxVisible) startIndex = activeIndex - maxVisible + 1;
-    } else {
-      startIndex = 0; // show all on large screens
+  // ✅ Responsive buttons (for small screens)
+  window.addEventListener("resize", () => {
+    const newMaxVisible = window.innerWidth < 640 ? 1 : 3;
+    if (newMaxVisible !== maxVisibleButtons) {
+      maxVisibleButtons = newMaxVisible;
+      renderVariantButtons(mainSwiper.realIndex);
     }
 
-    renderOtherImages();
-    renderVariantButtons();
+  const newMaxVisibleThumbs = window.innerWidth < 640 ? 3 : 5; // 👈 update for thumbnails
+  if (newMaxVisibleThumbs !== maxVisibleThumbs) {
+    maxVisibleThumbs = newMaxVisibleThumbs;
+    renderThumbnails(mainSwiper.realIndex);
+  }
+  });
+
+  // ✅ Initial render
+  renderThumbnails(0);
+  renderVariantButtons(0);
+
+  const popup = document.querySelector('#imagePopup')
+  const popupImageHolder = document.querySelector('#zoomedImage')
+  const popupImage = document.querySelector('#zoomedImage img')
+  const closeBtn = document.querySelector('#closeBtn')
+
+
+  slides.forEach((slide)=>{
+    slide.addEventListener('click',()=>{
+      popup.classList.add('active')
+      document.body.style.overflow = 'hidden'
+
+       const activeIndex = mainSwiper.realIndex;
+    popupImage.src = slides[activeIndex].src;
+
+    })
+  })
+
+  const closePopup = ()=>{
+    popup.classList.remove('active');
+    document.body.style.overflow = ''
+
   }
 
-// Click thumbnail (on the <img> inside <span>)
-otherImages.forEach((span, i) => {
-  const img = span.querySelector("img");
-  img.addEventListener("click", () => showMainImage(i));
-});
+  closeBtn.addEventListener('click',closePopup)
+  popup.addEventListener('click',(e)=>{
+    if(!popupImageHolder.contains(e.target)){
+      closePopup();
+    }
+  })
 
-  // Navigation buttons
-  prevBtn.addEventListener("click", () => {
-    activeIndex = (activeIndex - 1 + total) % total;
-    showMainImage(activeIndex);
-  });
 
-  nextBtn.addEventListener("click", () => {
-    activeIndex = (activeIndex + 1) % total;
-    showMainImage(activeIndex);
-  });
 
-  // Handle resize
-  window.addEventListener("resize", () => showMainImage(activeIndex));
-
-  // Init
-  showMainImage(activeIndex);
 });

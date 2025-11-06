@@ -247,40 +247,73 @@
     </article>
 
     <article class="productImage">
+      <!-- ✅ Main Swiper -->
+      <div class="swiper currentProductSwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="../media/images/product1.png" alt="Pine" data-variant="pine" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../media/images/product2.png" alt="Lemon" data-variant="lemon" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../media/images/product1.png" alt="Strawberry" data-variant="strawberry" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../media/images/product2.png" alt="Lavender" data-variant="lavender" />
+          </div>
+          <div class="swiper-slide">
+            <img src="../media/images/product1.png" alt="Orange" data-variant="orange" />
+          </div>
+           <div class="swiper-slide">
+            <img src="../media/images/product1.png" alt="Orange" data-variant="orange" />
+          </div>
+           <div class="swiper-slide">
+            <img src="../media/images/product1.png" alt="Orange" data-variant="orange" />
+          </div>
+           <div class="swiper-slide">
+            <img src="../media/images/product1.png" alt="Orange" data-variant="orange" />
+          </div>
+           <div class="swiper-slide">
+            <img src="../media/images/product1.png" alt="Orange" data-variant="orange" />
+          </div>
+           <div class="swiper-slide">
+            <img src="../media/images/product1.png" alt="Orange" data-variant="orange" />
+          </div>
+        </div>
+      </div>
 
-      <!-- ✅ Each image gets a data-variant attribute -->
-<figure id="currentProductImage">
-  <div class="otherImages">
-    <span class="otherImg active"><img src="../media/images/product1.png" data-variant="pine" alt="Pine" /></span>
-    <span class="otherImg"><img src="../media/images/product2.png" data-variant="lemon" alt="Lemon" /></span>
-    <span class="otherImg"><img src="../media/images/product1.png" data-variant="strawberry" alt="Strawberry" /></span>
-    <span class="otherImg"><img src="../media/images/product2.png" data-variant="lavender" alt="Lavender" /></span>
-    <span class="otherImg"><img src="../media/images/product1.png" data-variant="orange" alt="Orange" /></span>
-  </div>
+      <!-- ✅ Your old thumbnail div (unchanged) -->
+      <div class="otherImages">
+        <span class="otherImg active"><img src="../media/images/product1.png" alt="Pine" /></span>
+        <span class="otherImg"><img src="../media/images/product2.png" alt="Lemon" /></span>
+        <span class="otherImg"><img src="../media/images/product1.png" alt="Strawberry" /></span>
+        <span class="otherImg"><img src="../media/images/product2.png" alt="Lavender" /></span>
+        <span class="otherImg"><img src="../media/images/product1.png" alt="Orange" /></span>
+        <span class="otherImg"><img src="../media/images/product1.png" alt="Orange" /></span>
+        <span class="otherImg"><img src="../media/images/product1.png" alt="Orange" /></span>
+        <span class="otherImg"><img src="../media/images/product1.png" alt="Orange" /></span>
+        <span class="otherImg"><img src="../media/images/product1.png" alt="Orange" /></span>
+        <span class="otherImg"><img src="../media/images/product1.png" alt="Orange" /></span>
 
-  <img src="../media/images/product1.png" data-variant="pine" alt="Pine" />
-  <img src="../media/images/product2.png" data-variant="lemon" alt="Lemon" class="hidden" />
-  <img src="../media/images/product1.png" data-variant="strawberry" alt="Strawberry" class="hidden" />
-  <img src="../media/images/product2.png" data-variant="lavender" alt="Lavender" class="hidden" />
-  <img src="../media/images/product1.png" data-variant="orange" alt="Orange" class="hidden" />
-</figure>
+      </div>
 
-
-
+      <!-- ✅ Variant Buttons -->
       <div class="productVariants">
-        <button class="swipeVariant" id="prevVariant">
+        <button class="swiper-prev swipeVariant">
           <i class="fa-solid fa-arrow-right"></i>
         </button>
 
         <div id="variantButtons"></div>
 
-        <button class="swipeVariant" id="nextVariant">
+        <button class="swiper-next swipeVariant">
           <i class="fa-solid fa-arrow-left"></i>
         </button>
       </div>
     </article>
   </div>
 </section>
+
 <section id="otherProducts" class="products">
             <h2 class="intro" data-aos="fade-up">منتجات اخرى</h2>
 
@@ -494,6 +527,15 @@
       </div>
     </footer>
 </main>
+
+
+
+<figure class="imagePopup" id="imagePopup">
+  <div id="zoomedImage">
+    <button type="button" id="closeBtn"><i class="fa-solid fa-xmark"></i></button>
+    <img id="popupImg" src="" alt="Product Image" />
+  </div>
+</figure>
 </body>
 <!-- 1. Third-party libraries (that don’t depend on your code) -->
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
