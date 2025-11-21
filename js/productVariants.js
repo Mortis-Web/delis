@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const otherImages = Array.from(document.querySelectorAll(".otherImages .otherImg"));
   const total = slides.length;
 
+
   let thumbStartIndex = 0;
   let buttonStartIndex = 0;
 let maxVisibleThumbs = 6;

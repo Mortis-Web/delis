@@ -724,6 +724,24 @@
       flex: 2;
     }
 
+    #mapLocation{
+      margin-top: 1rem;
+      display: block;
+      /* margin-inline: auto; */
+      background-color: var(--primary-color);
+      width: 100%;
+      border-radius: 0.5rem;
+      max-width: 200px;
+      &:hover{
+        background-color: transparent;
+        a{
+          color: var(--primary-color);
+        }
+      }
+      a{
+      color: white;
+      }
+    }
     .readMore {
       max-width: fit-content;
       background-color: var(--primary-color);
